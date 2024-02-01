@@ -1,9 +1,9 @@
-void printNcR(int n, int r)
+int NcR(int n, int r)
 {
  
     // p holds the value of n*(n-1)*(n-2)...,
     // k holds the value of r*(r-1)...
-    long long p = 1, k = 1;
+    int p = 1, k = 1;
  
     // C(n, r) == C(n, n-r),
     // choosing the smaller value
@@ -16,7 +16,7 @@ void printNcR(int n, int r)
             k *= r;
  
             // gcd of p, k
-            long long m = __gcd(p, k);
+            int m = __gcd(p, k);
  
             // dividing by gcd, to simplify
             // product division by their gcd 
@@ -37,6 +37,6 @@ void printNcR(int n, int r)
         p = 1;
  
     // if our approach is correct p = ans and k =1
-    cout << p << endl;
+    return p;
 }
  
