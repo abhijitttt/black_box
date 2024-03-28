@@ -1,4 +1,4 @@
-int max_sum(int a[], int size) 
+int max_sum(vector<int> a, int size) 
 {
     int mx = INT_MIN;
     int x = 0;
