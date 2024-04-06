@@ -131,3 +131,65 @@ int32_t main()
         cout << ans << endl;
     }
 }
+
+
+
+
+// count subset with a given sum
+
+#include <bits/stdc++.h>
+
+
+using namespace std;
+#define int long long
+#define endl "\n"
+int mod = 1e9+7;
+
+
+int zero_one_knapsack(vector<int> wt,int w,int n )
+{
+    vector<vector<int>> num(n+1,vector<int>(w+1));
+    for(int i = 0; i <= n; i++)
+    {
+        for(int j = 0; j <= w; j++)
+        {
+            if(i == 0) num[i][j] = 0;
+            if(j == 0) num[i][j] = 1;
+        }
+    }
+
+    for(int i = 1; i <= n; i++)
+    {
+        for(int j = 1; j <= w; j++)
+        {
+            if(wt[i-1] <= j)
+            {
+                num[i][j] = num[i-1][j-wt[i-1]]+num[i-1][j];
+            }
+            else
+            {
+                num[i][j] = num[i-1][j];
+            }
+        }
+    }
+
+    return num[n][w];
+
+
+}
+
+int32_t main()
+{
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    
+    int tt = 1;
+    //cin >> tt;
+    while(tt--)
+    {
+        vector<int> arr{2,3,5,6,8,10};
+        int sum = 10;
+        cout << zero_one_knapsack(arr,10,6) << endl;
+
+    }
+}
